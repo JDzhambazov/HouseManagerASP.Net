@@ -8,6 +8,8 @@
         public Address()
         {
             this.Properties = new HashSet<Property>();
+            this.Expenses = new HashSet<Expens>();
+            this.Incomes = new HashSet<Income>();
         }
 
         public int Id { get; set; }
@@ -31,10 +33,14 @@
 
         public int NumberOfProperties { get; set; }
 
-        public int ManagerId { get; set; }
+        public string ManagerId { get; set; }
 
         public ApplicationUser Manager { get; set; }
 
-        public ICollection<Property> Properties { get; set; }
+        public virtual ICollection<Property> Properties { get; set; }
+
+        public virtual ICollection<Income> Incomes { get; set; }
+
+        public virtual ICollection<Expens> Expenses { get; set; }
     }
 }
