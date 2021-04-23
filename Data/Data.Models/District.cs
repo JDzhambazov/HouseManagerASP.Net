@@ -1,14 +1,13 @@
 ﻿namespace Data.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class City
+    public class District
     {
-        public City()
+        public District()
         {
-            this.Addreses = new HashSet<Address>();
+            this.Address = new HashSet<Address>();
         }
 
         public int Id { get; set; }
@@ -16,6 +15,6 @@
         [Required]
         public string Name { get; set; }
 
-        public virtual ICollection<Address> Addreses { get; set; }
+        public ICollection<Address> Address { get; set; }
     }
 }
