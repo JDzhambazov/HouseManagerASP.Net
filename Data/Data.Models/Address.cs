@@ -49,5 +49,7 @@
         public virtual ICollection<Income> Incomes { get; set; }
 
         public virtual ICollection<Expens> Expenses { get; set; }
+
+        public ICollection<МonthlyТaxe> МonthlyТaxes { get; set; }
     }
 }
