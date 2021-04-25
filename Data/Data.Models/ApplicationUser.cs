@@ -13,6 +13,9 @@
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.Properties = new HashSet<Property>();
+            this.Managers = new HashSet<Address>();
+            this.Paymasters = new HashSet<Address>();
         }
 
         // Audit info
@@ -31,7 +34,9 @@
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
 
-        public virtual ICollection<Address> Addresses { get; set; }
+        public virtual ICollection<Address> Managers { get; set; }
+
+        public virtual ICollection<Address> Paymasters { get; set; }
 
         public virtual ICollection<Property> Properties { get; set; }
     }

@@ -27,9 +27,27 @@
 
         public DbSet<PropertyType> PropertiesTypes { get; set; }
 
+        public DbSet<Expens> Expens { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=.;Database=HouseManager;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
+
+        //protected override void OnModelCreating(ModelBuilder builder)
+        //{
+        //    builder.Entity<Address>(x =>
+        //    {
+        //        x.HasOne(x => x.Manager)
+        //        .WithMany(x => x.Managers)
+        //        .HasForeignKey(x => x.ManagerId)
+        //        .OnDelete(DeleteBehavior.Restrict);
+
+        //        x.HasOne(x => x.Paymaster)
+        //        .WithMany(x => x.Paymasters)
+        //        .HasForeignKey(x => x.PaymasterId)
+        //        .OnDelete(DeleteBehavior.Restrict);
+        //    });
+        //}
     }
 }

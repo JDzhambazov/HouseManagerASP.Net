@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Address
     {
@@ -35,7 +36,13 @@
 
         public string ManagerId { get; set; }
 
+        [InverseProperty(nameof(ApplicationUser.Managers))]
         public ApplicationUser Manager { get; set; }
+
+        public string PaymasterId { get; set; }
+
+        [InverseProperty(nameof(ApplicationUser.Paymasters))]
+        public ApplicationUser Paymaster { get; set; }
 
         public virtual ICollection<Property> Properties { get; set; }
 
