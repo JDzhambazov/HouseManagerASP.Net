@@ -24,15 +24,14 @@
             // Console.WriteLine(user.Id);
             // db.Users.Add(new ApplicationUser
             // {
-            //    Id = Guid.NewGuid().ToString(),
-            //    CreatedOn = DateTime.Now,
-            //    UserName = "Ivan",
-            //    IsDeleted = false,
-            //    EmailConfirmed = true,
-            //    PhoneNumberConfirmed = false,
-            //    TwoFactorEnabled = false,
-            //    LockoutEnabled = false,
-            //    AccessFailedCount = 2,
+            //     CreatedOn = DateTime.Now,
+            //     UserName = "Ivan",
+            //     IsDeleted = false,
+            //     EmailConfirmed = true,
+            //     PhoneNumberConfirmed = false,
+            //     TwoFactorEnabled = false,
+            //     LockoutEnabled = false,
+            //     AccessFailedCount = 2,
             // });
             // db.SaveChanges();
         }
