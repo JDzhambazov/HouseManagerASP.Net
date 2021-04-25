@@ -29,6 +29,12 @@
 
         public DbSet<Expens> Expens { get; set; }
 
+        public DbSet<MonthFee> МonthlyТaxes { get; set; }
+
+        public DbSet<RegularIncome> RegularIncomes { get; set; }
+
+        public DbSet<NotRegularIncome> NotRegularIncomes { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=.;Database=HouseManager;Trusted_Connection=True;MultipleActiveResultSets=true");

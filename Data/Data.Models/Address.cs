@@ -10,7 +10,9 @@
         {
             this.Properties = new HashSet<Property>();
             this.Expenses = new HashSet<Expens>();
-            this.Incomes = new HashSet<Income>();
+            this.RegularIncomes = new HashSet<RegularIncome>();
+            this.NotRegularIncomes = new HashSet<NotRegularIncome>();
+            this.МonthlyFees = new HashSet<MonthFee>();
         }
 
         public int Id { get; set; }
@@ -30,8 +32,10 @@
         [Required]
         public string Number { get; set; }
 
+        [MaxLength(5)]
         public string Entrance { get; set; }
 
+        [MaxLength(2)]
         public int NumberOfProperties { get; set; }
 
         public string ManagerId { get; set; }
@@ -46,10 +50,12 @@
 
         public virtual ICollection<Property> Properties { get; set; }
 
-        public virtual ICollection<Income> Incomes { get; set; }
+        public virtual ICollection<RegularIncome> RegularIncomes { get; set; }
+
+        public virtual ICollection<NotRegularIncome> NotRegularIncomes { get; set; }
 
         public virtual ICollection<Expens> Expenses { get; set; }
 
-        public ICollection<МonthlyТaxe> МonthlyТaxes { get; set; }
+        public virtual ICollection<MonthFee> МonthlyFees { get; set; }
     }
 }

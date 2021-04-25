@@ -1,8 +1,9 @@
 ﻿namespace Data.Models
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
 
-    public class Income
+    public class RegularIncome
     {
         public int Id { get; set; }
 
@@ -10,6 +11,7 @@
 
         public Property Property { get; set; }
 
+        [MaxLength(6)]
         public decimal Price { get; set; }
 
         public DateTime Date { get; set; }

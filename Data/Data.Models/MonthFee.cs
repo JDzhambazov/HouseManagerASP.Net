@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class МonthlyТaxe
+    public class MonthFee
     {
         public int Id { get; set; }
 
