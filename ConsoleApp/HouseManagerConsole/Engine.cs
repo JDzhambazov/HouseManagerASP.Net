@@ -18,31 +18,16 @@
 
             db.Database.Migrate();
 
-            // var generateData = new DataGenerator(db);
-
-            // generateData.AddAddress();
-            // var address = db.Addresses.FirstOrDefault();
-            // var propertyType = new PropertyType { Name = "Апартамент" };
-
-            // generateData.AddProperties(address, propertyType);
-
-            // db.Database.EnsureDeleted();
-            // db.Database.EnsureCreated();
-
-            // var user = db.Users.FirstOrDefault();
-            // Console.WriteLine(user.Id);
-            // db.Users.Add(new ApplicationUser
+            // var res = db.Properties.Where(x => x.Id == 1)
+            //    .Select(x => new
+            //    {
+            //        name= x.MonthFees.Sum(x => x.Cost),
+            //    })
+            //    .ToList();
+            // foreach (var item in res)
             // {
-            //     CreatedOn = DateTime.Now,
-            //     UserName = "Ivan",
-            //     IsDeleted = false,
-            //     EmailConfirmed = true,
-            //     PhoneNumberConfirmed = false,
-            //     TwoFactorEnabled = false,
-            //     LockoutEnabled = false,
-            //     AccessFailedCount = 2,
-            // });
-            // db.SaveChanges();
+            //    Console.WriteLine($"{item.name} -> ");
+            // }
         }
     }
 }

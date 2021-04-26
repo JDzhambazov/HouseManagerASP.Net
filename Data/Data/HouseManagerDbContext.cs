@@ -45,5 +45,16 @@
         {
             optionsBuilder.UseSqlServer("Server=.;Database=HouseManager;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<MonthFee>()
+                .HasOne(x => x.Address)
+                .WithMany(x => x.МonthlyFees)
+                .HasForeignKey(x => x.AddressId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            base.OnModelCreating(builder);
+        }
     }
 }

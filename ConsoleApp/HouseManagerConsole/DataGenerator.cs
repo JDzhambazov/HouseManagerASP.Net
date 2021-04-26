@@ -21,7 +21,7 @@
                 District = new District { Name = "Лазур" },
                 Number = "88",
                 Entrance = "Б",
-                NumberOfProperties = 18,
+                NumberOfProperties = 16,
             });
             this.db.SaveChanges();
         }
