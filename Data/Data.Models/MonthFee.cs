@@ -10,9 +10,9 @@
 
         public Address Address { get; set; }
 
-        public int NameId { get; set; }
+        public int FeeTypeId { get; set; }
 
-        public FeeType Name { get; set; }
+        public FeeType FeeType { get; set; }
 
         [MaxLength(6)]
         public decimal Cost { get; set; }

@@ -16,9 +16,18 @@
         {
             var db = new HouseManagerDbContext();
 
-            // db.Database.Migrate();
-            db.Database.EnsureDeleted();
-            db.Database.EnsureCreated();
+            db.Database.Migrate();
+
+            // var generateData = new DataGenerator(db);
+
+            // generateData.AddAddress();
+            // var address = db.Addresses.FirstOrDefault();
+            // var propertyType = new PropertyType { Name = "Апартамент" };
+
+            // generateData.AddProperties(address, propertyType);
+
+            // db.Database.EnsureDeleted();
+            // db.Database.EnsureCreated();
 
             // var user = db.Users.FirstOrDefault();
             // Console.WriteLine(user.Id);

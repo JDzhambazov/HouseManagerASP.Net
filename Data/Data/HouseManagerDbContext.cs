@@ -35,6 +35,10 @@
 
         public DbSet<NotRegularIncome> NotRegularIncomes { get; set; }
 
+        public DbSet<RegularDueAmount> RegularDueAmounts { get; set; }
+
+        public DbSet<NotRegularDueAmount> NotRegularDueAmounts { get; set; }
+
         public DbSet<FeeType> FeeTypes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
