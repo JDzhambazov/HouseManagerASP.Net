@@ -15,8 +15,8 @@
         public void Run()
         {
             var db = new HouseManagerDbContext();
-            // db.Database.Migrate();
 
+            // db.Database.Migrate();
             db.Database.EnsureDeleted();
             db.Database.EnsureCreated();
 

@@ -29,7 +29,7 @@
 
         public DbSet<Expens> Expens { get; set; }
 
-        public DbSet<MonthFee> МonthlyТaxes { get; set; }
+        public DbSet<MonthFee> МonthlyFees { get; set; }
 
         public DbSet<RegularIncome> RegularIncomes { get; set; }
 

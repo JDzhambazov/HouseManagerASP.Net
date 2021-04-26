@@ -29,6 +29,6 @@
 
         public Address Address { get; set; }
 
-        public ICollection<ApplicationUser> Residents { get; set; }
+        public virtual ICollection<ApplicationUser> Residents { get; set; }
     }
 }
