@@ -22,16 +22,17 @@
             var seeder = new Seeder(db);
             seeder.Seed();
 
-            // var res = db.Properties.Where(x => x.Id == 1)
-            //    .Select(x => new
-            //    {
-            //        name= x.MonthFees.Sum(x => x.Cost),
-            //    })
-            //    .ToList();
-            // foreach (var item in res)
-            // {
-            //    Console.WriteLine($"{item.name} -> ");
-            // }
+            var propperyService = new PropertyService(db);
+            for (int i = 1; i < 17; i++)
+            {
+                var user = propperyService.GetAllResidents(i);
+
+                foreach (var item in user)
+                {
+                    Console.WriteLine(item);
+                }
+            }
+
         }
     }
 }
