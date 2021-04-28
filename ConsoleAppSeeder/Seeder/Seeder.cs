@@ -19,7 +19,7 @@
         public void Seed()
         {
             // SeedUsers();
-            SeedAddress();
+            // SeedAddress();
         }
 
         private void SeedUsers()
@@ -47,7 +47,10 @@
 
         private void SeedAddress()
         {
-
+            var addressService = new AddressService(db);
+            addressService.CreateAddress("Бургас","Лазур", null, "88", "2", 16);
+            addressService.SetAddressManager(1, "Атанас Бошев");
+            addressService.SetAddressPaymaster(1, "Живко Джамбазов");
         }
     }
 }

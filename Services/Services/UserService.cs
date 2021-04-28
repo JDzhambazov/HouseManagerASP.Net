@@ -29,7 +29,7 @@
                 CreatedOn = DateTime.Now,
                 PasswordHash = password,
                 EmailConfirmed = true,
-            }); ;
+            });
             this.db.SaveChanges();
         }
     }
