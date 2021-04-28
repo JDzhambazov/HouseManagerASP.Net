@@ -1,0 +1,41 @@
+﻿namespace Services
+{
+    using System;
+
+    using Data;
+    using Data.Models;
+    using Services.Contracts;
+
+    public class UserService : IUserService
+    {
+        private readonly HouseManagerDbContext db;
+
+        public UserService(HouseManagerDbContext db)
+        {
+            this.db = db;
+        }
+
+        public void AddNewUser(string userName, string firstName, string lastName, string email, string password)
+        {
+            var fullname = string.Empty;
+
+            if (firstName != null && lastName != null)
+            {
+                fullname = $"{firstName} {lastName}";
+            }
+
+            this.db.Users.Add(new ApplicationUser
+            {
+                UserName = userName,
+                FullName = fullname,
+                NormalizedUserName = userName.ToUpper(),
+                Email = email != null ? email : "",
+                NormalizedEmail = email != null ? email.ToUpper() : null,
+                CreatedOn = DateTime.Now,
+                PasswordHash = password,
+                EmailConfirmed = true,
+            }); ;
+            this.db.SaveChanges();
+        }
+    }
+}

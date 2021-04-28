@@ -5,10 +5,11 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-
     using Data;
     using Data.Models;
     using Microsoft.EntityFrameworkCore;
+    using Seeder;
+    using Services;
 
     public class Engine
     {
@@ -17,6 +18,9 @@
             var db = new HouseManagerDbContext();
 
             db.Database.Migrate();
+
+            //var seeder = new Seeder(db);
+            //seeder.Seed();
 
             // var res = db.Properties.Where(x => x.Id == 1)
             //    .Select(x => new

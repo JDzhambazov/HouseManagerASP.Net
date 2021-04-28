@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ConsoleAppSeeder\Seeder\Seeder.csproj" />
     <ProjectReference Include="..\..\Services\Services\Services.csproj" />
   </ItemGroup>
 
