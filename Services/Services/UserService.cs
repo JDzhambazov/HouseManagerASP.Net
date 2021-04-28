@@ -17,19 +17,14 @@
 
         public void AddNewUser(string userName, string firstName, string lastName, string email, string password)
         {
-            var fullname = string.Empty;
-
-            if (firstName != null && lastName != null)
-            {
-                fullname = $"{firstName} {lastName}";
-            }
+            var fullname = string.Join(' ', firstName, lastName).Trim();
 
             this.db.Users.Add(new ApplicationUser
             {
                 UserName = userName,
                 FullName = fullname,
                 NormalizedUserName = userName.ToUpper(),
-                Email = email != null ? email : "",
+                Email = email != null ? email : null,
                 NormalizedEmail = email != null ? email.ToUpper() : null,
                 CreatedOn = DateTime.Now,
                 PasswordHash = password,

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(HouseManagerDbContext))]
-    [Migration("20210428111712_InsertFulNamePropertyInApplicatonUserModel")]
+    [Migration("20210428112941_InsertFulNamePropertyInApplicatonUserModel")]
     partial class InsertFulNamePropertyInApplicatonUserModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -151,7 +151,8 @@ namespace Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");

@@ -9,7 +9,8 @@ namespace Data.Migrations
             migrationBuilder.AddColumn<string>(
                 name: "FullName",
                 table: "AspNetUsers",
-                type: "nvarchar(max)",
+                type: "nvarchar(100)",
+                maxLength: 100,
                 nullable: true);
         }
 

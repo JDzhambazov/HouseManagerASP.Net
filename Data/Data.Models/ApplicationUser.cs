@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-
+    using System.ComponentModel.DataAnnotations;
     using Microsoft.AspNetCore.Identity;
 
     public class ApplicationUser : IdentityUser
@@ -18,6 +18,7 @@
             this.Paymasters = new HashSet<Address>();
         }
 
+        [MaxLength(100)]
         public string FullName { get; set; }
 
         // Audit info

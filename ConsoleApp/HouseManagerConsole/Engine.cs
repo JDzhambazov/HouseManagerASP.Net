@@ -19,8 +19,8 @@
 
             db.Database.Migrate();
 
-            //var seeder = new Seeder(db);
-            //seeder.Seed();
+            var seeder = new Seeder(db);
+            seeder.Seed();
 
             // var res = db.Properties.Where(x => x.Id == 1)
             //    .Select(x => new
