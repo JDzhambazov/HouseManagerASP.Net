@@ -30,6 +30,7 @@
         public Street Street { get; set; }
 
         [Required]
+        [MaxLength(5)]
         public string Number { get; set; }
 
         [MaxLength(5)]

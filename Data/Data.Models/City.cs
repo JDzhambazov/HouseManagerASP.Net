@@ -14,6 +14,7 @@
         public int Id { get; set; }
 
         [Required]
+        [MaxLength(20)]
         public string Name { get; set; }
 
         public virtual ICollection<Address> Addreses { get; set; }
