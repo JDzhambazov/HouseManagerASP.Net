@@ -48,13 +48,24 @@
             this.db.SaveChanges();
         }
 
-        public ICollection<MonthFee> GetAllFees(int id)
+        public ICollection<MonthFee> GetAllFeesInAddress(int addressId)
         {
             var fees = this.db.MonthlyFees
                 .Include(x => x.Address)
                 .Include(f => f.FeeType)
-                .Where(x => x.AddressId == id)
+                .Where(x => x.AddressId == addressId)
                 .ToList();
+            return fees;
+        }
+
+        public ICollection<MonthFee> GetAllFeesInProperty(int propertyId)
+        {
+            var fees = this.db.Properties
+                .Where(x => x.Id == propertyId)
+                .Include(x => x.MonthFees)
+                .ThenInclude(x => x.FeeType)
+                .Select(x => x.MonthFees)
+                .FirstOrDefault();
             return fees;
         }
     }

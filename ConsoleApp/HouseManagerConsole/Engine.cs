@@ -21,6 +21,13 @@
 
             var seeder = new Seeder(db);
             seeder.Seed();
+            var propertyService = new PropertyService(db);
+            var addressServise = new AddressService(db);
+            var feeService = new FeeService(db);
+            var userService = new UserService(db);
+
+            Console.WriteLine($"Постоянни разходи: {propertyService.GetDueAmount(1).RegularDueAmount}");
+            Console.WriteLine($"Временни разходи: {propertyService.GetDueAmount(1).NotRegularDueAmount}");
 
         }
     }

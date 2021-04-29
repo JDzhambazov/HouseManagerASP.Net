@@ -78,5 +78,35 @@
                       .FirstOrDefault();
             return result.user.ToList();
         }
+
+        public (decimal RegularDueAmount, decimal NotRegularDueAmount) GetDueAmount(int propertyId)
+        {
+            var fees = new FeeService(this.db);
+            var property = this.db.Properties.FirstOrDefault(x => x.Id == propertyId);
+            decimal regularDueAmount = 0;
+            decimal notRegularDueAmount = 0;
+
+            foreach (var item in fees.GetAllFeesInProperty(propertyId))
+            {
+                if (item.IsRegular && item.IsPersonal)
+                {
+                    regularDueAmount += item.Cost * property.ResidentsCount;
+                }
+                else if (item.IsRegular && !item.IsPersonal)
+                {
+                    regularDueAmount += item.Cost;
+                }
+                else if (!item.IsRegular && item.IsPersonal)
+                {
+                    notRegularDueAmount += item.Cost * property.ResidentsCount;
+                }
+                else
+                {
+                    notRegularDueAmount += item.Cost;
+                }
+            }
+
+            return (regularDueAmount, notRegularDueAmount);
+        }
     }
 }

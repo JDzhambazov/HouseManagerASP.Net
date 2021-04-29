@@ -9,5 +9,7 @@
         void AddResidentToProperty(string propertyName, string userName, string firstName, string lastName, string email, string password, int addressId);
 
         ICollection<string> GetAllResidents(int propertyId);
+
+        (decimal RegularDueAmount, decimal NotRegularDueAmount) GetDueAmount(int propertyId);
     }
 }

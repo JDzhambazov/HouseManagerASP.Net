@@ -9,6 +9,8 @@
 
         void AddFeeToProperty(ICollection<int> propertiesId, string feeName);
 
-        ICollection<MonthFee> GetAllFees(int addressId);
+        ICollection<MonthFee> GetAllFeesInAddress(int addressId);
+
+        ICollection<MonthFee> GetAllFeesInProperty(int propertyId);
     }
 }
