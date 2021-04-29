@@ -83,6 +83,30 @@
             return (regularDueAmount > 0 ? regularDueAmount : 0, notRegularDueAmount > 0 ? notRegularDueAmount : 0);
         }
 
+        public void AddStartDueAmount(int propertyId, int month, int year, decimal cost, bool isRegular)
+        {
+            if (isRegular)
+            {
+                this.db.RegularDueAmounts.Add(new RegularDueAmount
+                {
+                    Year = year,
+                    Month = month,
+                    Cost = cost,
+                    PropertyId = propertyId,
+                });
+            }
+            else
+            {
+                this.db.NotRegularDueAmounts.Add(new NotRegularDueAmount
+                {
+                    Year = year,
+                    Month = month,
+                    Cost = cost,
+                    PropertyId = propertyId,
+                });
+            }
+        }
+
         private void AddDueAmount(int month, int year, Property property)
         {
             var propertyService = new PropertyService(this.db);

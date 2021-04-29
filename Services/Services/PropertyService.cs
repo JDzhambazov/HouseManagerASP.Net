@@ -108,5 +108,12 @@
 
             return (regularDueAmount, notRegularDueAmount);
         }
+
+        public void ChangeResidentsCount(int propertyId, int newResidentsCount)
+        {
+            var currentProperty = this.db.Properties.FirstOrDefault(x => x.Id == propertyId);
+            currentProperty.ResidentsCount = newResidentsCount;
+            this.db.SaveChanges();
+        }
     }
 }

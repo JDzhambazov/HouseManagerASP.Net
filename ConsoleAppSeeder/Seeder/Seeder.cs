@@ -137,6 +137,12 @@
             var amountsService = new DueAmountService(db);
             var feeService = new FeeService(db);
 
+            // задължения от предходна година
+            amountsService.AddStartDueAmount(3, 12, 2019, 6, true);
+            amountsService.AddStartDueAmount(4, 12, 2019, 6, true);
+            amountsService.AddStartDueAmount(5, 12, 2019, 13, true);
+            amountsService.AddStartDueAmount(7, 12, 2019, 13, true);
+
             // 2020 year
             for (int i = 1; i <= 4; i++)
             {

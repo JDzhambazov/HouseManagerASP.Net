@@ -11,5 +11,7 @@
         ICollection<string> GetAllResidents(int propertyId);
 
         (decimal RegularDueAmount, decimal NotRegularDueAmount) CalculateDueAmount(int propertyId);
+
+        void ChangeResidentsCount(int propertyId, int newResidentsCount);
     }
 }
