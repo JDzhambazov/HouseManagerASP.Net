@@ -22,17 +22,6 @@
             var seeder = new Seeder(db);
             seeder.Seed();
 
-            var propperyService = new PropertyService(db);
-            for (int i = 1; i < 17; i++)
-            {
-                var user = propperyService.GetAllResidents(i);
-
-                foreach (var item in user)
-                {
-                    Console.WriteLine(item);
-                }
-            }
-
         }
     }
 }

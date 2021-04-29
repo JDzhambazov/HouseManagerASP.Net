@@ -29,7 +29,7 @@
 
         public DbSet<Expens> Expens { get; set; }
 
-        public DbSet<MonthFee> МonthlyFees { get; set; }
+        public DbSet<MonthFee> MonthlyFees { get; set; }
 
         public DbSet<RegularIncome> RegularIncomes { get; set; }
 
@@ -50,7 +50,7 @@
         {
             builder.Entity<MonthFee>()
                 .HasOne(x => x.Address)
-                .WithMany(x => x.МonthlyFees)
+                .WithMany(x => x.MonthlyFees)
                 .HasForeignKey(x => x.AddressId)
                 .OnDelete(DeleteBehavior.Restrict);
 

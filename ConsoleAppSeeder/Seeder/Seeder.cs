@@ -1,10 +1,11 @@
 ﻿namespace Seeder
 {
     using System;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using Data;
     using Data.Models;
-
+    using Microsoft.EntityFrameworkCore;
     using Services;
 
     public class Seeder
@@ -21,6 +22,7 @@
             // SeedUsers();
             // SeedAddress();
             // SeedProperties();
+            // SeedFees();
         }
 
         private void SeedUsers()
@@ -103,6 +105,30 @@
             propertyService.AddResidentToProperty("Aп.31", "Кина Шереметова");
             propertyService.AddResidentToProperty("Aп.31", "Атанас Бошев");
             propertyService.AddResidentToProperty("Aп.32", "Нана Милтиядова");
+        }
+
+        private void SeedFees() 
+        {
+            var fees = new FeeService(db);
+            fees.AddFeeToAddress(1, "Общи части", 4, true, true);
+            fees.AddFeeToAddress(1, "Асансьор", 5, true, true);
+            fees.AddFeeToAddress(1, "Ремонт вход", 20, false, false);
+
+            var propertyList = new List<int>();
+            var address = db.Addresses
+                .Include(x => x.Properties)
+                .FirstOrDefault(x => x.Id == 1);
+
+            foreach (var item in address.Properties)
+            {
+                propertyList.Add(item.Id);
+            }
+
+            fees.AddFeeToProperty(propertyList, "Общи части");
+            fees.AddFeeToProperty(propertyList, "Ремонт вход");
+
+            var lift = new List<int>() { 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
+            fees.AddFeeToProperty(lift, "Асансьор");
         }
     }
 }

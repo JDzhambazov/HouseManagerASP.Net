@@ -8,6 +8,7 @@
         public MonthFee()
         {
             this.Properties = new HashSet<Property>();
+            this.Addresses = new HashSet<Address>();
         }
 
         public int Id { get; set; }
@@ -28,5 +29,7 @@
         public bool IsRegular { get; set; }
 
         public virtual ICollection<Property> Properties { get; set; }
+
+        public virtual ICollection<Address> Addresses { get; set; }
     }
 }

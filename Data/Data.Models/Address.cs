@@ -12,7 +12,7 @@
             this.Expenses = new HashSet<Expens>();
             this.RegularIncomes = new HashSet<RegularIncome>();
             this.NotRegularIncomes = new HashSet<NotRegularIncome>();
-            this.МonthlyFees = new HashSet<MonthFee>();
+            this.MonthlyFees = new HashSet<MonthFee>();
         }
 
         public int Id { get; set; }
@@ -57,6 +57,6 @@
 
         public virtual ICollection<Expens> Expenses { get; set; }
 
-        public virtual ICollection<MonthFee> МonthlyFees { get; set; }
+        public virtual ICollection<MonthFee> MonthlyFees { get; set; }
     }
 }
