@@ -1,7 +1,7 @@
 ﻿namespace Services.Contracts
 {
-    using Data.Models;
     using System.Collections.Generic;
+    using Data.Models;
 
     public interface IAddressService
     {

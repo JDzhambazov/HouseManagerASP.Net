@@ -10,6 +10,6 @@
 
         ICollection<string> GetAllResidents(int propertyId);
 
-        (decimal RegularDueAmount, decimal NotRegularDueAmount) GetDueAmount(int propertyId);
+        (decimal RegularDueAmount, decimal NotRegularDueAmount) CalculateDueAmount(int propertyId);
     }
 }

@@ -79,7 +79,7 @@
             return result.user.ToList();
         }
 
-        public (decimal RegularDueAmount, decimal NotRegularDueAmount) GetDueAmount(int propertyId)
+        public (decimal RegularDueAmount, decimal NotRegularDueAmount) CalculateDueAmount(int propertyId)
         {
             var fees = new FeeService(this.db);
             var property = this.db.Properties.FirstOrDefault(x => x.Id == propertyId);

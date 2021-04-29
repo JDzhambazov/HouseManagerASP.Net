@@ -25,15 +25,21 @@
             var addressServise = new AddressService(db);
             var feeService = new FeeService(db);
             var userService = new UserService(db);
+            var dueAmountService = new DueAmountService(db);
 
-            var properies = addressServise.GetAllProperyies(1);
+            // var properies = addressServise.GetAllProperyies(1);
 
-            foreach (var item in properies)
-            {
-                Console.WriteLine(item.Name);
-                Console.WriteLine($"Постоянни разходи: {propertyService.GetDueAmount(item.Id).RegularDueAmount}");
-                Console.WriteLine($"Временни разходи: {propertyService.GetDueAmount(item.Id).NotRegularDueAmount}");
-            }
+            // foreach (var item in properies)
+            // {
+            //     Console.WriteLine(item.Name);
+            //     Console.WriteLine($"Постоянни разходи: {propertyService.GetDueAmount(item.Id).RegularDueAmount}");
+            //     Console.WriteLine($"Временни разходи: {propertyService.GetDueAmount(item.Id).NotRegularDueAmount}");
+            // }
+
+            var result = dueAmountService.GetPropertyMountDueAmount(1);
+            // dueAmountService.AddMounthDueAmountInProperies(1, 3, 2021);
+            Console.WriteLine(result.NotRegularDueAmount);
+            Console.WriteLine(result.RegularDueAmount);
         }
     }
 }
