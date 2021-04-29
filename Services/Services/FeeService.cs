@@ -48,6 +48,18 @@
             this.db.SaveChanges();
         }
 
+        public void EditAddresFee(int addressId, string feeName, decimal cost)
+        {
+            var fee = this.db.Addresses
+                .Include(x => x.MonthlyFees)
+                .ThenInclude(x => x.FeeType)
+                .Select(x => x.MonthlyFees.FirstOrDefault(f => f.FeeType.Name == feeName))
+                .FirstOrDefault();
+
+            fee.Cost = cost;
+            this.db.SaveChanges();
+        }
+
         public ICollection<MonthFee> GetAllFeesInAddress(int addressId)
         {
             var fees = this.db.MonthlyFees

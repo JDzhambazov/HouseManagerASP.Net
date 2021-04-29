@@ -21,6 +21,7 @@
 
             var seeder = new Seeder(db);
             seeder.Seed();
+
             var propertyService = new PropertyService(db);
             var addressServise = new AddressService(db);
             var feeService = new FeeService(db);
@@ -35,11 +36,6 @@
             //     Console.WriteLine($"Постоянни разходи: {propertyService.GetDueAmount(item.Id).RegularDueAmount}");
             //     Console.WriteLine($"Временни разходи: {propertyService.GetDueAmount(item.Id).NotRegularDueAmount}");
             // }
-
-            var result = dueAmountService.GetPropertyMountDueAmount(1);
-            // dueAmountService.AddMounthDueAmountInProperies(1, 3, 2021);
-            Console.WriteLine(result.NotRegularDueAmount);
-            Console.WriteLine(result.RegularDueAmount);
         }
     }
 }

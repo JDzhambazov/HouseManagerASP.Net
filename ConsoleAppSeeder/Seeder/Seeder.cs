@@ -19,15 +19,16 @@
 
         public void Seed()
         {
-            // SeedUsers();
-            // SeedAddress();
-            // SeedProperties();
-            // SeedFees();
+            SeedUsers();
+            SeedAddress();
+            SeedProperties();
+            SeedFees();
+            SeedDueAmounts();
         }
 
         private void SeedUsers()
         {
-            UserService userService = new UserService(db);
+            var userService = new UserService(db);
             userService.AddNewUser("jamby", "Живко","Джамбазов", "jamby@mail.bg", "123456");
             userService.AddNewUser("lazur2", "Осман", "Сейдали", null, "123456");
             userService.AddNewUser("lazur3", "Кремена", "Миланова", null, "123456");
@@ -110,9 +111,9 @@
         private void SeedFees() 
         {
             var fees = new FeeService(db);
-            fees.AddFeeToAddress(1, "Общи части", 4, true, true);
-            fees.AddFeeToAddress(1, "Асансьор", 5, true, true);
-            fees.AddFeeToAddress(1, "Ремонт вход", 20, false, false);
+            fees.AddFeeToAddress(1, "Общи части", 3, true, true);
+            fees.AddFeeToAddress(1, "Асансьор", 3.50m, true, true);
+            fees.AddFeeToAddress(1, "Ремонт вход", 0, false, false);
 
             var propertyList = new List<int>();
             var address = db.Addresses
@@ -129,6 +130,50 @@
 
             var lift = new List<int>() { 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
             fees.AddFeeToProperty(lift, "Асансьор");
+        }
+
+        private void SeedDueAmounts()
+        {
+            var amountsService = new DueAmountService(db);
+            var feeService = new FeeService(db);
+
+            // 2020 year
+            for (int i = 1; i <= 4; i++)
+            {
+                for (int j = 1; j <= 16; j++)
+                {
+                    amountsService.AddMounthDueAmountInProperies(j, i, 2020);
+                }
+            }
+
+            // добавяне разходи за ремонт
+            feeService.EditAddresFee(1, "Ремонт вход", 20);
+
+            for (int i = 5; i <= 12; i++)
+            {
+                for (int j = 1; j <= 16; j++)
+                {
+                    amountsService.AddMounthDueAmountInProperies(j, i, 2020);
+                }
+            }
+
+            // 2021 year
+            for (int j = 1; j <= 16; j++)
+            {
+                amountsService.AddMounthDueAmountInProperies(j, 1, 2021);
+            }
+
+            // промяна на таксите за входа
+            feeService.EditAddresFee(1, "Общи части", 4);
+            feeService.EditAddresFee(1, "Асансьор", 5);
+
+            for (int i = 2; i <= 4; i++)
+            {
+                for (int j = 1; j <= 16; j++)
+                {
+                    amountsService.AddMounthDueAmountInProperies(j, i, 2021);
+                }
+            }
         }
     }
 }

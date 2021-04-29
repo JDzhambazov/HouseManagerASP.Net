@@ -34,23 +34,6 @@
             foreach (var property in properties)
             {
                 this.AddDueAmount(month, year, property);
-
-                // var dueAmount = propertyService.CalculateDueAmount(property.Id);
-                // this.db.RegularDueAmounts.Add(new RegularDueAmount
-                // {
-                //     Year = year,
-                //     Month = month,
-                //     Cost = dueAmount.RegularDueAmount,
-                //     PropertyId = property.Id,
-                // });
-                // this.db.NotRegularDueAmounts.Add(new NotRegularDueAmount
-                // {
-                //     Year = year,
-                //     Month = month,
-                //     Cost = dueAmount.NotRegularDueAmount,
-                //     PropertyId = property.Id,
-                // });
-                // this.db.SaveChanges();
             }
         }
 
@@ -76,6 +59,15 @@
 
         public (decimal RegularDueAmount, decimal NotRegularDueAmount) GetPropertyMountDueAmount(int propertyId)
         {
+            var currentMonthDueAmaount = this.db.RegularDueAmounts
+                .FirstOrDefault(x => x.PropertyId == propertyId && x.Month == DateTime.Now.Month && x.Year == DateTime.Now.Year);
+
+            if (currentMonthDueAmaount == null)
+            {
+                var property = this.db.Properties.FirstOrDefault(x => x.Id == propertyId);
+                this.AddMounthDueAmountInAllProperies(property.Id);
+            }
+
             var regularDueAmount = this.db.RegularDueAmounts
                 .Where(x => x.PropertyId == propertyId)
                 .Sum(x => x.Cost) - this.db.RegularIncomes
