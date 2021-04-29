@@ -19,11 +19,11 @@
 
         public void Seed()
         {
-            SeedUsers();
-            SeedAddress();
-            SeedProperties();
-            SeedFees();
-            SeedDueAmounts();
+            // SeedUsers();
+            // SeedAddress();
+            // SeedProperties();
+            // SeedFees();
+            // SeedDueAmounts();
         }
 
         private void SeedUsers()
@@ -66,7 +66,7 @@
             var propertyService = new PropertyService(db);
 
             propertyService.AddProperty("Aп.17", "Апартамент", 3, 1);
-            propertyService.AddProperty("Aп.18", "Апартамент", 3, 1);
+            propertyService.AddProperty("Aп.18", "Апартамент", 2, 1);
             propertyService.AddProperty("Aп.19", "Апартамент", 1, 1);
             propertyService.AddProperty("Aп.20", "Апартамент", 1, 1);
             propertyService.AddProperty("Aп.21", "Апартамент", 1, 1);
@@ -76,10 +76,10 @@
             propertyService.AddProperty("Aп.25", "Апартамент", 2, 1);
             propertyService.AddProperty("Aп.26", "Апартамент", 0, 1);
             propertyService.AddProperty("Aп.27", "Апартамент", 0, 1);
-            propertyService.AddProperty("Aп.28", "Апартамент", 1, 1);
+            propertyService.AddProperty("Aп.28", "Апартамент", 3, 1);
             propertyService.AddProperty("Aп.29", "Апартамент", 2, 1);
             propertyService.AddProperty("Aп.30", "Апартамент", 2, 1);
-            propertyService.AddProperty("Aп.31", "Апартамент", 3, 1);
+            propertyService.AddProperty("Aп.31", "Апартамент", 2, 1);
             propertyService.AddProperty("Aп.32", "Апартамент", 2, 1);
             
             //Users in properties
@@ -136,6 +136,7 @@
         {
             var amountsService = new DueAmountService(db);
             var feeService = new FeeService(db);
+            var propertyService = new PropertyService(db);
 
             // задължения от предходна година
             amountsService.AddStartDueAmount(3, 12, 2019, 6, true);
@@ -154,8 +155,28 @@
 
             // добавяне разходи за ремонт
             feeService.EditAddresFee(1, "Ремонт вход", 20);
+            // промяна брой обитатели ап.24
+            propertyService.ChangeResidentsCount(8, 4);
 
-            for (int i = 5; i <= 12; i++)
+            for (int i = 5; i <= 8; i++)
+            {
+                for (int j = 1; j <= 16; j++)
+                {
+                    amountsService.AddMounthDueAmountInProperies(j, i, 2020);
+                }
+            }
+
+            // промяна брой обитатели ап.28
+            propertyService.ChangeResidentsCount(12, 1);
+
+            for (int j = 1; j <= 16; j++)
+            {
+                amountsService.AddMounthDueAmountInProperies(j, 9, 2020);
+            }
+
+            // промяна брой обитатели ап.24
+            propertyService.ChangeResidentsCount(8, 3);
+            for (int i = 10; i <= 12; i++)
             {
                 for (int j = 1; j <= 16; j++)
                 {
@@ -164,14 +185,22 @@
             }
 
             // 2021 year
+            // промяна брой обитатели ап.18 ап.24 и ап.31
+            propertyService.ChangeResidentsCount(2, 3);
+            propertyService.ChangeResidentsCount(15, 3);
+            propertyService.ChangeResidentsCount(8, 4);
+
             for (int j = 1; j <= 16; j++)
             {
                 amountsService.AddMounthDueAmountInProperies(j, 1, 2021);
             }
 
             // промяна на таксите за входа
+            // промяна брой обитатели ап.24
+            propertyService.ChangeResidentsCount(8, 3);
             feeService.EditAddresFee(1, "Общи части", 4);
             feeService.EditAddresFee(1, "Асансьор", 5);
+
 
             for (int i = 2; i <= 4; i++)
             {
