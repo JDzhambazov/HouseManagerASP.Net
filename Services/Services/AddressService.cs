@@ -1,5 +1,6 @@
 ﻿namespace Services
 {
+    using System.Collections.Generic;
     using System.Linq;
     using Data;
     using Data.Models;
@@ -41,6 +42,11 @@
                 NumberOfProperties = numberOfProperties,
             });
             this.db.SaveChanges();
+        }
+
+        public ICollection<Property> GetAllProperyies(int addressId)
+        {
+            return this.db.Properties.Where(x => x.AddressId == addressId).ToList();
         }
 
         public void SetAddressManager(int addressId, string userFullName)

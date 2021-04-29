@@ -26,9 +26,14 @@
             var feeService = new FeeService(db);
             var userService = new UserService(db);
 
-            Console.WriteLine($"Постоянни разходи: {propertyService.GetDueAmount(1).RegularDueAmount}");
-            Console.WriteLine($"Временни разходи: {propertyService.GetDueAmount(1).NotRegularDueAmount}");
+            var properies = addressServise.GetAllProperyies(1);
 
+            foreach (var item in properies)
+            {
+                Console.WriteLine(item.Name);
+                Console.WriteLine($"Постоянни разходи: {propertyService.GetDueAmount(item.Id).RegularDueAmount}");
+                Console.WriteLine($"Временни разходи: {propertyService.GetDueAmount(item.Id).NotRegularDueAmount}");
+            }
         }
     }
 }

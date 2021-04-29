@@ -1,6 +1,7 @@
 ﻿namespace Services.Contracts
 {
     using Data.Models;
+    using System.Collections.Generic;
 
     public interface IAddressService
     {
@@ -9,5 +10,7 @@
         void SetAddressManager(int addressId, string userFullName);
 
         void SetAddressPaymaster(int addressId, string userFullName);
+
+        ICollection<Property> GetAllProperyies(int addressId);
     }
 }
