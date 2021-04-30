@@ -11,10 +11,22 @@
     public class Seeder
     {
         private readonly HouseManagerDbContext db;
+        private PropertyService propertyService;
+        private AddressService addressService;
+        private FeeService feeService;
+        private UserService userService;
+        private DueAmountService amountService;
+        private IncomeService incomeService;
 
         public Seeder(HouseManagerDbContext dbContext)
         {
             this.db = dbContext;
+            this.propertyService = new PropertyService(db);
+            this.addressService = new AddressService(db);
+            this.feeService = new FeeService(db);
+            this.userService = new UserService(db);
+            this.amountService = new DueAmountService(db);
+            this.incomeService = new IncomeService(db);
         }
 
         public void Seed()
@@ -24,12 +36,12 @@
             // SeedProperties();
             // SeedFees();
             // SeedDueAmounts();
+            SeedIncome();
         }
 
         private void SeedUsers()
         {
-            var userService = new UserService(db);
-            userService.AddNewUser("jamby", "Живко","Джамбазов", "jamby@mail.bg", "123456");
+            userService.AddNewUser("jamby", "Живко", "Джамбазов", "jamby@mail.bg", "123456");
             userService.AddNewUser("lazur2", "Осман", "Сейдали", null, "123456");
             userService.AddNewUser("lazur3", "Кремена", "Миланова", null, "123456");
             userService.AddNewUser("lazur4", "Владимир", "Попов", null, "123456");
@@ -55,7 +67,6 @@
 
         private void SeedAddress()
         {
-            var addressService = new AddressService(db);
             addressService.CreateAddress("Бургас","Лазур", null, "88", "2", 16);
             addressService.SetAddressManager(1, "Атанас Бошев");
             addressService.SetAddressPaymaster(1, "Живко Джамбазов");
@@ -63,8 +74,6 @@
 
         private void SeedProperties()
         {
-            var propertyService = new PropertyService(db);
-
             propertyService.AddProperty("Aп.17", "Апартамент", 3, 1);
             propertyService.AddProperty("Aп.18", "Апартамент", 2, 1);
             propertyService.AddProperty("Aп.19", "Апартамент", 1, 1);
@@ -110,10 +119,9 @@
 
         private void SeedFees() 
         {
-            var fees = new FeeService(db);
-            fees.AddFeeToAddress(1, "Общи части", 3, true, true);
-            fees.AddFeeToAddress(1, "Асансьор", 3.50m, true, true);
-            fees.AddFeeToAddress(1, "Ремонт вход", 0, false, false);
+            feeService.AddFeeToAddress(1, "Общи части", 3, true, true);
+            feeService.AddFeeToAddress(1, "Асансьор", 3.50m, true, true);
+            feeService.AddFeeToAddress(1, "Ремонт вход", 0, false, false);
 
             var propertyList = new List<int>();
             var address = db.Addresses
@@ -125,31 +133,28 @@
                 propertyList.Add(item.Id);
             }
 
-            fees.AddFeeToProperty(propertyList, "Общи части");
-            fees.AddFeeToProperty(propertyList, "Ремонт вход");
+            feeService.AddFeeToProperty(propertyList, "Общи части");
+            feeService.AddFeeToProperty(propertyList, "Ремонт вход");
 
             var lift = new List<int>() { 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
-            fees.AddFeeToProperty(lift, "Асансьор");
+            feeService.AddFeeToProperty(lift, "Асансьор");
         }
 
         private void SeedDueAmounts()
         {
-            var amountsService = new DueAmountService(db);
-            var feeService = new FeeService(db);
-            var propertyService = new PropertyService(db);
 
             // задължения от предходна година
-            amountsService.AddStartDueAmount(3, 12, 2019, 6, true);
-            amountsService.AddStartDueAmount(4, 12, 2019, 6, true);
-            amountsService.AddStartDueAmount(5, 12, 2019, 13, true);
-            amountsService.AddStartDueAmount(7, 12, 2019, 13, true);
+            amountService.AddStartDueAmount(3, 12, 2019, 6, true);
+            amountService.AddStartDueAmount(4, 12, 2019, 6, true);
+            amountService.AddStartDueAmount(5, 12, 2019, 13, true);
+            amountService.AddStartDueAmount(7, 12, 2019, 13, true);
 
             // 2020 year
             for (int i = 1; i <= 4; i++)
             {
                 for (int j = 1; j <= 16; j++)
                 {
-                    amountsService.AddMounthDueAmountInProperies(j, i, 2020);
+                    amountService.AddMounthDueAmountInProperies(j, i, 2020);
                 }
             }
 
@@ -162,7 +167,7 @@
             {
                 for (int j = 1; j <= 16; j++)
                 {
-                    amountsService.AddMounthDueAmountInProperies(j, i, 2020);
+                    amountService.AddMounthDueAmountInProperies(j, i, 2020);
                 }
             }
 
@@ -171,7 +176,7 @@
 
             for (int j = 1; j <= 16; j++)
             {
-                amountsService.AddMounthDueAmountInProperies(j, 9, 2020);
+                amountService.AddMounthDueAmountInProperies(j, 9, 2020);
             }
 
             // промяна брой обитатели ап.24
@@ -180,7 +185,7 @@
             {
                 for (int j = 1; j <= 16; j++)
                 {
-                    amountsService.AddMounthDueAmountInProperies(j, i, 2020);
+                    amountService.AddMounthDueAmountInProperies(j, i, 2020);
                 }
             }
 
@@ -192,7 +197,7 @@
 
             for (int j = 1; j <= 16; j++)
             {
-                amountsService.AddMounthDueAmountInProperies(j, 1, 2021);
+                amountService.AddMounthDueAmountInProperies(j, 1, 2021);
             }
 
             // промяна на таксите за входа
@@ -206,9 +211,19 @@
             {
                 for (int j = 1; j <= 16; j++)
                 {
-                    amountsService.AddMounthDueAmountInProperies(j, i, 2021);
+                    amountService.AddMounthDueAmountInProperies(j, i, 2021);
                 }
             }
+        }
+
+        private void SeedIncome()
+        {
+            var user = db.Users.FirstOrDefault(x => x.FullName == "Живко Джамбазов");
+            for (int i = 1; i < 8; i++)
+            {
+                // incomeService.AddIncome(1, 9, new DateTime(2020, i, 10), user, true);
+            }
+
         }
     }
 }
