@@ -20,7 +20,7 @@
             db.Database.Migrate();
 
             var seeder = new Seeder(db);
-            seeder.Seed();
+            // seeder.Seed();
 
             var propertyService = new PropertyService(db);
             var addressServise = new AddressService(db);
@@ -28,16 +28,18 @@
             var userService = new UserService(db);
             var dueAmountService = new DueAmountService(db);
 
-            // var properies = addressServise.GetAllProperyies(1);
-
-            // foreach (var item in properies)
+            // задължения за текущ месец
+            // for (int i = 1; i < 17; i++)
             // {
-            //     Console.WriteLine(item.Name);
-            //     Console.WriteLine($"Постоянни разходи: {propertyService.GetDueAmount(item.Id).RegularDueAmount}");
-            //     Console.WriteLine($"Временни разходи: {propertyService.GetDueAmount(item.Id).NotRegularDueAmount}");
+            //    var result = dueAmountService.GetPropertyMountDueAmount(i);
+            //    if (result.RegularDueAmount > 0 || result.NotRegularDueAmount > 0)
+            //    {
+            //        Console.WriteLine($"Ап.{i}");
+            //        Console.WriteLine(result.RegularDueAmount);
+            //        Console.WriteLine(result.NotRegularDueAmount);
+            //        Console.WriteLine("---------------------------");
+            //    }
             // }
-            //var result = dueAmountService.GetPropertyMountDueAmount(1);
-            //Console.WriteLine(result.RegularDueAmount);
         }
     }
 }

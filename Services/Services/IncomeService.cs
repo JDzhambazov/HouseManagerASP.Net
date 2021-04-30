@@ -29,6 +29,7 @@
                     Date = date,
                     Price = price,
                     Resident = residentId,
+                    AddressId = addressId,
                 });
             }
             else
@@ -39,6 +40,7 @@
                     Date = date,
                     Price = price,
                     Resident = residentId,
+                    AddressId = addressId,
                 });
             }
 

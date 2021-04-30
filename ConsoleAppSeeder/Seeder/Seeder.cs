@@ -36,7 +36,7 @@
             // SeedProperties();
             // SeedFees();
             // SeedDueAmounts();
-            SeedIncome();
+            // SeedIncome();
         }
 
         private void SeedUsers()
@@ -94,6 +94,7 @@
             //Users in properties
             propertyService.AddResidentToProperty("Aп.17", "jamby", "Живко", "Джамбазов", "jamby@mail.bg", "123456", 1);
             propertyService.AddResidentToProperty("Aп.17", "rumi", "Румяна", "Джамбазова", "rumiu@abv.bg", "123456", 1);
+            propertyService.AddResidentToProperty("Aп.18", "burgas", "Община", "Бургас", "obshtina@burgas.bg", "123456", 1);
             propertyService.AddResidentToProperty("Aп.18", "Осман Сейдали");
             propertyService.AddResidentToProperty("Aп.19", "Владимир Попов");
             propertyService.AddResidentToProperty("Aп.20", "Кремена Миланова");
@@ -136,7 +137,7 @@
             feeService.AddFeeToProperty(propertyList, "Общи части");
             feeService.AddFeeToProperty(propertyList, "Ремонт вход");
 
-            var lift = new List<int>() { 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
+            var lift = new List<int>() { 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
             feeService.AddFeeToProperty(lift, "Асансьор");
         }
 
@@ -218,12 +219,300 @@
 
         private void SeedIncome()
         {
-            var user = db.Users.FirstOrDefault(x => x.FullName == "Живко Джамбазов");
+            ApplicationUser user;
+            user = db.Users.FirstOrDefault(x => x.FullName == "Живко Джамбазов");
+            // общи части
             for (int i = 1; i < 8; i++)
             {
-                // incomeService.AddIncome(1, 9, new DateTime(2020, i, 10), user, true);
+                incomeService.AddIncome(1, 9, new DateTime(2020, i, 10), user, 1, true);
             }
+            incomeService.AddIncome(1, 18, new DateTime(2020, 8, 10), user, 1, true); 
+            incomeService.AddIncome(1, 27, new DateTime(2020, 10, 10), user, 1, true);
+            incomeService.AddIncome(1, 30.40m, new DateTime(2021, 1, 12), user, 1, true);
+            incomeService.AddIncome(1, 76.80m, new DateTime(2021, 2, 15), user, 1, true);
 
+            // за ремонт
+            incomeService.AddIncome(1, 20, new DateTime(2020, 5, 10), user, 1, false);
+            incomeService.AddIncome(1, 20, new DateTime(2020, 6, 10), user, 1, false);
+            incomeService.AddIncome(1, 20, new DateTime(2020, 7, 10), user, 1, false);
+            incomeService.AddIncome(1, 40, new DateTime(2020, 8, 10), user, 1, false);
+            incomeService.AddIncome(1, 300, new DateTime(2020, 10, 10), user, 1, false);
+
+            ///////////////////////////////////////////////////
+            user = db.Users.FirstOrDefault(x => x.FullName == "Осман Сейдали");
+            // общи части
+            for (int i = 1; i < 7; i++)
+            {
+                incomeService.AddIncome(2, 6, new DateTime(2020, i, 10), user, 1, true);
+            }
+            incomeService.AddIncome(2, 12, new DateTime(2020, 8, 10), user, 1, true);
+            incomeService.AddIncome(2, 24, new DateTime(2020, 10, 10), user, 1, true);
+            incomeService.AddIncome(2, 9, new DateTime(2021, 1, 12), user, 1, true);
+            incomeService.AddIncome(2, 12, new DateTime(2021, 2, 15), user, 1, true);
+            incomeService.AddIncome(2, 24, new DateTime(2021, 4, 15), user, 1, true);
+
+            ////////////////////////////////////////////////////////
+            user = db.Users.FirstOrDefault(x => x.FullName == "Община Бургас");
+            // за ремонт
+            incomeService.AddIncome(2, 151, new DateTime(2020, 11, 10), user, 1, false);
+
+            ////////////////////////////////////////////////////////////
+            user = db.Users.FirstOrDefault(x => x.FullName == "Владимир Попов");
+            // общи части
+            incomeService.AddIncome(3, 9, new DateTime(2020, 1, 10), user, 1, true);
+            incomeService.AddIncome(3, 3, new DateTime(2020, 2, 10), user, 1, true);
+            incomeService.AddIncome(3, 12, new DateTime(2020, 5, 10), user, 1, true);
+            incomeService.AddIncome(3, 6, new DateTime(2020, 8, 10), user, 1, true);
+            incomeService.AddIncome(3, 3, new DateTime(2020, 9, 10), user, 1, true);
+            incomeService.AddIncome(3, 3, new DateTime(2020, 10, 10), user, 1, true);
+            incomeService.AddIncome(3, 12, new DateTime(2021, 2, 9), user, 1, true);
+            incomeService.AddIncome(3, 5, new DateTime(2021, 3, 7), user, 1, true);
+
+            // за ремонт
+            incomeService.AddIncome(3, 40, new DateTime(2020, 5, 10), user, 1, false);
+            incomeService.AddIncome(3, 40, new DateTime(2020, 6, 10), user, 1, false);
+            incomeService.AddIncome(3, 80, new DateTime(2020, 7, 10), user, 1, false);
+            incomeService.AddIncome(3, 40, new DateTime(2021, 2, 9), user, 1, false);
+            incomeService.AddIncome(3, 20, new DateTime(2021, 3, 7), user, 1, false);
+
+            //////////////////////////////////////////////////////////
+            user = db.Users.FirstOrDefault(x => x.FullName == "Кремена Миланова");
+            // общи части
+            incomeService.AddIncome(4, 3, new DateTime(2020, 1, 10), user, 1, true);
+            incomeService.AddIncome(4, 9, new DateTime(2020, 2, 10), user, 1, true);
+            incomeService.AddIncome(4, 5.3m, new DateTime(2020, 4, 10), user, 1, true);
+            incomeService.AddIncome(4, 6.7m, new DateTime(2020, 6, 10), user, 1, true);
+            incomeService.AddIncome(4, 6, new DateTime(2020, 8, 10), user, 1, true);
+            incomeService.AddIncome(4, 6, new DateTime(2020, 10, 10), user, 1, true);
+            incomeService.AddIncome(4, 6, new DateTime(2020, 12, 9), user, 1, true);
+            incomeService.AddIncome(4, 11, new DateTime(2021, 3, 25), user, 1, true);
+
+            // за ремонт
+            incomeService.AddIncome(4, 20, new DateTime(2020, 6, 10), user, 1, false);
+            incomeService.AddIncome(4, 60, new DateTime(2020, 8, 10), user, 1, false);
+            incomeService.AddIncome(4, 40, new DateTime(2020, 10, 10), user, 1, false);
+            incomeService.AddIncome(4, 40, new DateTime(2020, 12, 9), user, 1, false);
+            incomeService.AddIncome(4, 60, new DateTime(2021, 3, 25), user, 1, false);
+
+            //////////////////////////////////////////////////////
+            user = db.Users.FirstOrDefault(x => x.FullName == "Николай Кирилов");
+            // общи части
+            incomeService.AddIncome(5, 71.5m, new DateTime(2020, 9, 10), user, 1, true);
+            incomeService.AddIncome(5, 20, new DateTime(2020, 11, 10), user, 1, true);
+            incomeService.AddIncome(5, 33, new DateTime(2021, 4, 22), user, 1, true);
+
+            // за ремонт
+            incomeService.AddIncome(5, 150, new DateTime(2020, 9, 10), user, 1, false);
+            incomeService.AddIncome(5, 10, new DateTime(2020, 11, 10), user, 1, false);
+            incomeService.AddIncome(5, 80, new DateTime(2021, 4, 22), user, 1, false);
+
+            //////////////////////////////////////////
+            user = db.Users.FirstOrDefault(x => x.FullName == "Ганев");
+            // общи части
+            incomeService.AddIncome(6, 39, new DateTime(2020, 1, 10), user, 1, true);
+            incomeService.AddIncome(6, 13, new DateTime(2020, 4, 10), user, 1, true);
+            incomeService.AddIncome(6, 13, new DateTime(2020, 5, 10), user, 1, true);
+            incomeService.AddIncome(6, 26, new DateTime(2020, 7, 10), user, 1, true);
+            incomeService.AddIncome(6, 13, new DateTime(2020, 8, 10), user, 1, true);
+            incomeService.AddIncome(6, 13, new DateTime(2020, 9, 10), user, 1, true);
+            incomeService.AddIncome(6, 39, new DateTime(2020, 11, 10), user, 1, true);
+            incomeService.AddIncome(6, 13, new DateTime(2021, 1, 10), user, 1, true);
+            incomeService.AddIncome(6, 20, new DateTime(2021, 2, 21), user, 1, true);
+            incomeService.AddIncome(6, 34, new DateTime(2021, 4, 28), user, 1, true);
+
+            // за ремонт
+            incomeService.AddIncome(6, 20, new DateTime(2020, 5, 10), user, 1, false);
+            incomeService.AddIncome(6, 40, new DateTime(2020, 7, 10), user, 1, false);
+            incomeService.AddIncome(6, 20, new DateTime(2020, 8, 10), user, 1, false);
+            incomeService.AddIncome(6, 300, new DateTime(2020, 10, 10), user, 1, false);
+
+            ////////////////////////////////////////////////////////
+            user = db.Users.FirstOrDefault(x => x.FullName == "Валентина Дунгьова");
+            // общи части
+            incomeService.AddIncome(7, 26, new DateTime(2020, 1, 10), user, 1, true);
+            incomeService.AddIncome(7, 19.5m, new DateTime(2020, 5, 10), user, 1, true);
+            incomeService.AddIncome(7, 6.5m, new DateTime(2020, 6, 10), user, 1, true);
+            incomeService.AddIncome(7, 19.5m, new DateTime(2020, 9, 10), user, 1, true);
+            incomeService.AddIncome(7, 6.5m, new DateTime(2020, 10, 10), user, 1, true);
+            incomeService.AddIncome(7, 20, new DateTime(2021, 1, 13), user, 1, true);
+
+            // за ремонт
+            incomeService.AddIncome(7, 20, new DateTime(2020, 5, 10), user, 1, false);
+            incomeService.AddIncome(7, 20, new DateTime(2020, 6, 10), user, 1, false);
+            incomeService.AddIncome(7, 80, new DateTime(2020, 10, 10), user, 1, false);
+            incomeService.AddIncome(7, 60, new DateTime(2021, 1, 13), user, 1, false);
+
+            ////////////////////////////////////////////////
+            user = db.Users.FirstOrDefault(x => x.FullName == "Албена Ангелова");
+            // общи части
+            for (int i = 1; i < 5; i++)
+            {
+                incomeService.AddIncome(8, 19.5m, new DateTime(2020, i, 10), user, 1, true);
+            }
+            for (int i = 5; i < 10; i++)
+            {
+                incomeService.AddIncome(8, 26, new DateTime(2020, i, 10), user, 1, true);
+            }
+            incomeService.AddIncome(8, 20, new DateTime(2020, 10, 10), user, 1, true);
+            incomeService.AddIncome(8, 38, new DateTime(2020, 11, 10), user, 1, true);
+            incomeService.AddIncome(8, 26, new DateTime(2021, 1, 13), user, 1, true);
+            incomeService.AddIncome(8, 27, new DateTime(2021, 2, 21), user, 1, true);
+            incomeService.AddIncome(8, 27.5m, new DateTime(2021, 3, 14), user, 1, true);
+            incomeService.AddIncome(8, 27, new DateTime(2021, 4, 28), user, 1, true);
+
+            // за ремонт
+            for (int i = 5; i < 10; i++)
+            {
+                incomeService.AddIncome(8, 20, new DateTime(2020, i, 10), user, 1, false);
+            }
+            incomeService.AddIncome(8, 300, new DateTime(2020, 10, 10), user, 1, false);
+
+            /////////////////////////////////
+            user = db.Users.FirstOrDefault(x => x.FullName == "Калин Бошев");
+            // общи части
+            for (int i = 1; i < 10; i++)
+            {
+                incomeService.AddIncome(9, 13, new DateTime(2020, i, 10), user, 1, true);
+            }
+            incomeService.AddIncome(9, 20, new DateTime(2020, 9, 10), user, 1, true);
+            incomeService.AddIncome(9, 10, new DateTime(2020, 10, 10), user, 1, true);
+            incomeService.AddIncome(9, 22, new DateTime(2020, 11, 10), user, 1, true);
+            incomeService.AddIncome(9, 13, new DateTime(2021, 1, 12), user, 1, true);
+            incomeService.AddIncome(9, 18, new DateTime(2021, 2, 21), user, 1, true);
+            incomeService.AddIncome(9, 18, new DateTime(2021, 3, 14), user, 1, true);
+            incomeService.AddIncome(9, 18, new DateTime(2021, 4, 28), user, 1, true);
+
+            // за ремонт
+            for (int i = 5; i < 10; i++)
+            {
+                incomeService.AddIncome(9, 20, new DateTime(2020, i, 10), user, 1, false);
+            }
+            incomeService.AddIncome(9, 60, new DateTime(2020, 10, 10), user, 1, false);
+            incomeService.AddIncome(9, 40, new DateTime(2020, 11, 10), user, 1, false);
+            incomeService.AddIncome(9, 40, new DateTime(2020, 11, 10), user, 1, false);
+            incomeService.AddIncome(9, 20, new DateTime(2021, 2, 21), user, 1, false);
+            incomeService.AddIncome(9, 20, new DateTime(2020, 4, 28), user, 1, false);
+
+            ///////////////////////////////////////////////
+            user = db.Users.FirstOrDefault(x => x.FullName == "РДВР");
+            // за ремонт
+            incomeService.AddIncome(11, 150, new DateTime(2020, 10, 10), user, 1, false);
+
+            /////////////////////////////////////
+            user = db.Users.FirstOrDefault(x => x.FullName == "---- Овчарова");
+            // общи части
+            for (int i = 1; i < 7; i++)
+            {
+                incomeService.AddIncome(12, 19.5m, new DateTime(2020, i, 10), user, 1, true);
+            }
+            incomeService.AddIncome(12, 39, new DateTime(2020, 8, 10), user, 1, true);
+            
+            for (int i = 9; i < 13; i++)
+            {
+                incomeService.AddIncome(12, 26.5m, new DateTime(2020, i, 10), user, 1, true);
+            }
+            incomeService.AddIncome(12, 6.5m, new DateTime(2021, 1, 29), user, 1, true);
+            incomeService.AddIncome(12, 9, new DateTime(2021, 2, 26), user, 1, true);
+            incomeService.AddIncome(12, 9, new DateTime(2021, 3, 26), user, 1, true);
+            incomeService.AddIncome(12, 9, new DateTime(2021, 4, 27), user, 1, true);
+
+            // за ремонт
+            incomeService.AddIncome(12, 20, new DateTime(2020, 5, 10), user, 1, false);
+            incomeService.AddIncome(12, 20, new DateTime(2020, 6, 10), user, 1, false);
+            incomeService.AddIncome(12, 40, new DateTime(2020, 8, 10), user, 1, false);
+            incomeService.AddIncome(12, 20, new DateTime(2020, 9, 10), user, 1, false);
+            incomeService.AddIncome(12, 20, new DateTime(2020, 10, 10), user, 1, false);
+            incomeService.AddIncome(12, 40, new DateTime(2020, 11, 10), user, 1, false);
+            incomeService.AddIncome(12, 20, new DateTime(2021, 1, 29), user, 1, false);
+            incomeService.AddIncome(12, 20, new DateTime(2021, 2, 26), user, 1, false);
+            incomeService.AddIncome(12, 20, new DateTime(2021, 3, 26), user, 1, false);
+            incomeService.AddIncome(12, 20, new DateTime(2021, 4, 27), user, 1, false);
+
+            /////////////////////////////////////
+            user = db.Users.FirstOrDefault(x => x.FullName == "Димо Лапчев");
+            // общи части
+            for (int i = 1; i < 10; i++)
+            {
+                incomeService.AddIncome(13, 13, new DateTime(2020, i, 10), user, 1, true);
+            }
+            incomeService.AddIncome(13, 39, new DateTime(2020, 11, 10), user, 1, true);
+            incomeService.AddIncome(13, 13, new DateTime(2021, 1, 10), user, 1, true);
+            incomeService.AddIncome(13, 18, new DateTime(2021, 2, 21), user, 1, true);
+            incomeService.AddIncome(13, 18, new DateTime(2021, 3, 14), user, 1, true);
+            incomeService.AddIncome(13, 18, new DateTime(2021, 4, 28), user, 1, true);
+
+            // за ремонт
+            for (int i = 5; i < 10; i++)
+            {
+                incomeService.AddIncome(13, 20, new DateTime(2020, i, 10), user, 1, false);
+            }
+            
+            incomeService.AddIncome(13, 300, new DateTime(2020, 10, 10), user, 1, false);
+       
+            ////////////////////////////////////////////
+            user = db.Users.FirstOrDefault(x => x.FullName == "Ирина Панайотова");
+            // общи части
+            for (int i = 1; i < 13; i++)
+            {
+                incomeService.AddIncome(14, 13, new DateTime(2020, i, 10), user, 1, true);
+            }
+            incomeService.AddIncome(14, 13, new DateTime(2021, 2, 3), user, 1, true);
+            incomeService.AddIncome(14, 18, new DateTime(2021, 2, 21), user, 1, true);
+            incomeService.AddIncome(14, 18, new DateTime(2021, 3, 31), user, 1, true);
+            incomeService.AddIncome(14, 18, new DateTime(2021, 4, 28), user, 1, true);
+
+            // за ремонт
+            for (int i = 5; i < 13; i++)
+            {
+                incomeService.AddIncome(14, 20, new DateTime(2020, i, 10), user, 1, false);
+            }
+            incomeService.AddIncome(14, 20, new DateTime(2021, 2, 3), user, 1, false);
+            incomeService.AddIncome(14, 20, new DateTime(2021, 2, 21), user, 1, false);
+            incomeService.AddIncome(14, 20, new DateTime(2021, 3, 31), user, 1, false);
+            incomeService.AddIncome(14, 20, new DateTime(2021, 4, 28), user, 1, false);
+
+            //////////////////////////////////////////
+            user = db.Users.FirstOrDefault(x => x.FullName == "Атанас Бошев");
+            // общи части
+            for (int i = 1; i < 7; i++)
+            {
+                incomeService.AddIncome(15, 13, new DateTime(2020, i, 10), user, 1, true);
+            }
+            incomeService.AddIncome(15, 26, new DateTime(2020, 8, 10), user, 1, true);
+            incomeService.AddIncome(15, 52, new DateTime(2020, 11, 10), user, 1, true);
+            incomeService.AddIncome(15, 20, new DateTime(2021, 1, 10), user, 1, true);
+            incomeService.AddIncome(15, 27, new DateTime(2021, 2, 21), user, 1, true);
+            incomeService.AddIncome(15, 26.5m, new DateTime(2021, 3, 14), user, 1, true);
+            incomeService.AddIncome(15, 27, new DateTime(2021, 4, 28), user, 1, true);
+
+            // за ремонт
+            incomeService.AddIncome(15, 20, new DateTime(2020, 5, 10), user, 1, false);
+            incomeService.AddIncome(15, 20, new DateTime(2020, 5, 10), user, 1, false);
+            incomeService.AddIncome(15, 40, new DateTime(2020, 8, 10), user, 1, false);
+            incomeService.AddIncome(15, 300, new DateTime(2020, 10, 10), user, 1, false);
+            incomeService.AddIncome(15, 20, new DateTime(2021, 1, 10), user, 1, false);
+
+            /////////////////////////////////////////////
+            user = db.Users.FirstOrDefault(x => x.FullName == "Нана Милтиядова");
+            // общи части
+            for (int i = 1; i < 13; i++)
+            {
+                incomeService.AddIncome(16, 13, new DateTime(2020, i, 10), user, 1, true);
+            }
+            incomeService.AddIncome(16, 13, new DateTime(2021, 1, 18), user, 1, true);
+            incomeService.AddIncome(16, 16, new DateTime(2021, 2, 12), user, 1, true);
+            incomeService.AddIncome(16, 20, new DateTime(2021, 3, 24), user, 1, true);
+            incomeService.AddIncome(16, 18, new DateTime(2021, 4, 20), user, 1, true);
+
+            // за ремонт
+            for (int i = 5; i < 13; i++)
+            {
+                incomeService.AddIncome(16, 20, new DateTime(2020, i, 10), user, 1, false);
+            }
+            incomeService.AddIncome(16, 20, new DateTime(2021, 1, 18), user, 1, false);
+            incomeService.AddIncome(16, 20, new DateTime(2021, 2, 12), user, 1, false);
+            incomeService.AddIncome(16, 20, new DateTime(2021, 3, 24), user, 1, false);
+            incomeService.AddIncome(16, 20, new DateTime(2021, 4, 20), user, 1, false);
         }
     }
 }
