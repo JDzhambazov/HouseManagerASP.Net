@@ -220,6 +220,8 @@
         private void SeedIncome()
         {
             ApplicationUser user;
+            //налична сума от предходна година
+            incomeService.AddIncome(null, 244.20m, new DateTime(2019, 12, 31), null, 1, true);
             user = db.Users.FirstOrDefault(x => x.FullName == "Живко Джамбазов");
             // общи части
             for (int i = 1; i < 8; i++)

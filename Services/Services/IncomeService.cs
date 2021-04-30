@@ -19,7 +19,7 @@
             this.db = db;
         }
 
-        public void AddIncome(int properyId, decimal price, DateTime date, ApplicationUser residentId, int addressId, bool isRegular)
+        public void AddIncome(int? properyId, decimal price, DateTime date, ApplicationUser resident, int addressId, bool isRegular)
         {
             if (isRegular)
             {
@@ -28,7 +28,7 @@
                     PropertyId = properyId,
                     Date = date,
                     Price = price,
-                    Resident = residentId,
+                    Resident = resident,
                     AddressId = addressId,
                 });
             }
@@ -39,7 +39,7 @@
                     PropertyId = properyId,
                     Date = date,
                     Price = price,
-                    Resident = residentId,
+                    Resident = resident,
                     AddressId = addressId,
                 });
             }

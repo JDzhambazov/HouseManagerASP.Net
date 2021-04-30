@@ -20,7 +20,7 @@
             db.Database.Migrate();
 
             var seeder = new Seeder(db);
-            // seeder.Seed();
+            seeder.Seed();
 
             var propertyService = new PropertyService(db);
             var addressServise = new AddressService(db);

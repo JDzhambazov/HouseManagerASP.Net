@@ -7,7 +7,7 @@
 
     public interface IIncomeService
     {
-        void AddIncome(int properyId, decimal price, DateTime date, ApplicationUser resident, int addressId, bool isRegular);
+        void AddIncome(int? properyId, decimal price, DateTime date, ApplicationUser resident, int addressId, bool isRegular);
 
         ICollection<IncomeViewModel> GetAllIncomeForPropery(int properyId, bool isRegular);
 
