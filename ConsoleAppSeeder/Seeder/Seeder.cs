@@ -411,7 +411,7 @@
             
             for (int i = 9; i < 13; i++)
             {
-                incomeService.AddIncome(12, 26.5m, new DateTime(2020, i, 10), user, 1, true);
+                incomeService.AddIncome(12, 6.5m, new DateTime(2020, i, 10), user, 1, true);
             }
             incomeService.AddIncome(12, 6.5m, new DateTime(2021, 1, 29), user, 1, true);
             incomeService.AddIncome(12, 9, new DateTime(2021, 2, 26), user, 1, true);

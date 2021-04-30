@@ -27,6 +27,7 @@
             var feeService = new FeeService(db);
             var userService = new UserService(db);
             var dueAmountService = new DueAmountService(db);
+            var incomeService = new IncomeService(db);
 
             // задължения за текущ месец
             // for (int i = 1; i < 17; i++)
@@ -39,6 +40,17 @@
             //        Console.WriteLine(result.NotRegularDueAmount);
             //        Console.WriteLine("---------------------------");
             //    }
+            // }
+
+            // for (int i = 1; i <= 16; i++)
+            // {
+            //    var incomes = incomeService.GetAllIncomeForPropery(i, false);
+            //    Console.WriteLine($"Ap. {i}");
+            //    foreach (var item in incomes)
+            //    {
+            //        Console.WriteLine($"Price: {item.Price} -> date: {item.Date.ToString("dd.MM.yyyy")}");
+            //    }
+            //    Console.WriteLine();
             // }
         }
     }

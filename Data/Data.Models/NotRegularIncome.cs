@@ -12,6 +12,7 @@
         public Property Property { get; set; }
 
         [MaxLength(6)]
+        [Range(0, double.MaxValue)]
         public decimal Price { get; set; }
 
         public DateTime Date { get; set; }

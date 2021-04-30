@@ -13,6 +13,7 @@
         public int Year { get; set; }
 
         [MaxLength(6)]
+        [Range(0, double.MaxValue)]
         public decimal Cost { get; set; }
 
         public int PropertyId { get; set; }

@@ -70,7 +70,7 @@
             if (isRegular)
             {
                 return this.db.RegularIncomes
-                    .Where(x => x.Id == propertyId)
+                    .Where(x => x.PropertyId == propertyId)
                     .Select(x => new IncomeViewModel
                     {
                         PropertyId = x.PropertyId,
@@ -85,7 +85,7 @@
             else
             {
                 return this.db.NotRegularIncomes
-                    .Where(x => x.Id == propertyId)
+                    .Where(x => x.PropertyId == propertyId)
                     .Select(x => new IncomeViewModel
                     {
                         PropertyId = x.PropertyId,

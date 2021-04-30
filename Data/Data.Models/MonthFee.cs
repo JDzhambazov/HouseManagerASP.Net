@@ -22,6 +22,7 @@
         public FeeType FeeType { get; set; }
 
         [MaxLength(6)]
+        [Range(0, double.MaxValue)]
         public decimal Cost { get; set; }
 
         public bool IsPersonal { get; set; }
