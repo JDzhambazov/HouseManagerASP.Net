@@ -19,5 +19,9 @@
         public string ResidentId { get; set; }
 
         public ApplicationUser Resident { get; set; }
+
+        public int AddressId { get; set; }
+
+        public Address Address { get; set; }
     }
 }

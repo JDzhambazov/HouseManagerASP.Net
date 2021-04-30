@@ -36,8 +36,8 @@
             //     Console.WriteLine($"Постоянни разходи: {propertyService.GetDueAmount(item.Id).RegularDueAmount}");
             //     Console.WriteLine($"Временни разходи: {propertyService.GetDueAmount(item.Id).NotRegularDueAmount}");
             // }
-            var result = dueAmountService.GetPropertyMountDueAmount(1);
-            Console.WriteLine(result.RegularDueAmount);
+            //var result = dueAmountService.GetPropertyMountDueAmount(1);
+            //Console.WriteLine(result.RegularDueAmount);
         }
     }
 }

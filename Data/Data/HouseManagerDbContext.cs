@@ -54,6 +54,18 @@
                 .HasForeignKey(x => x.AddressId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            builder.Entity<RegularIncome>()
+                .HasOne(x => x.Address)
+                .WithMany(x => x.RegularIncomes)
+                .HasForeignKey(x => x.AddressId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            builder.Entity<NotRegularIncome>()
+                .HasOne(x => x.Address)
+                .WithMany(x => x.NotRegularIncomes)
+                .HasForeignKey(x => x.AddressId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
             base.OnModelCreating(builder);
         }
     }
