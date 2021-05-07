@@ -30,25 +30,27 @@
             var incomeService = new IncomeService(db);
 
             // задължения за текущ месец
-            // for (int i = 1; i < 17; i++)
-            // {
-            //    var result = dueAmountService.GetPropertyMountDueAmount(i);
-            //    if (result.RegularDueAmount > 0 || result.NotRegularDueAmount > 0)
-            //    {
-            //        Console.WriteLine($"Ап.{i}");
-            //        Console.WriteLine(result.RegularDueAmount);
-            //        Console.WriteLine(result.NotRegularDueAmount);
-            //        Console.WriteLine("---------------------------");
-            //    }
-            // }
+            for (int i = 1; i < 17; i++)
+            {
+               var result = dueAmountService.GetPropertyMountDueAmount(i);
+               var user = propertyService.GetAllResidents(i);
+               if (result.RegularDueAmount > 0 || result.NotRegularDueAmount > 0)
+               {
+                   Console.WriteLine($"Ап.{i}");
+                   Console.WriteLine(user.FirstOrDefault());
+                   Console.WriteLine(result.RegularDueAmount);
+                   Console.WriteLine(result.NotRegularDueAmount);
+                   Console.WriteLine("---------------------------");
+               }
+            }
 
             // for (int i = 1; i <= 16; i++)
             // {
-            //    var incomes = incomeService.GetAllIncomeForPropery(i, false);
+            //    var incomes = incomeService.GetAllIncomeForPropery(i, true);
             //    Console.WriteLine($"Ap. {i}");
             //    foreach (var item in incomes)
             //    {
-            //        Console.WriteLine($"Price: {item.Price} -> date: {item.Date.ToString("dd.MM.yyyy")}");
+            //        Console.WriteLine($"Price: {item.Price} -> date: {item.Date.ToString("dd.MM.yyyy")} User -> {item.Resident.FullName}");
             //    }
             //    Console.WriteLine();
             // }

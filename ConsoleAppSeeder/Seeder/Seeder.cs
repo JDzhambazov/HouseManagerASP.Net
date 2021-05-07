@@ -372,7 +372,7 @@
             /////////////////////////////////
             user = db.Users.FirstOrDefault(x => x.FullName == "Калин Бошев");
             // общи части
-            for (int i = 1; i < 10; i++)
+            for (int i = 1; i < 9; i++)
             {
                 incomeService.AddIncome(9, 13, new DateTime(2020, i, 10), user, 1, true);
             }
@@ -390,7 +390,6 @@
                 incomeService.AddIncome(9, 20, new DateTime(2020, i, 10), user, 1, false);
             }
             incomeService.AddIncome(9, 60, new DateTime(2020, 10, 10), user, 1, false);
-            incomeService.AddIncome(9, 40, new DateTime(2020, 11, 10), user, 1, false);
             incomeService.AddIncome(9, 40, new DateTime(2020, 11, 10), user, 1, false);
             incomeService.AddIncome(9, 20, new DateTime(2021, 2, 21), user, 1, false);
             incomeService.AddIncome(9, 20, new DateTime(2020, 4, 28), user, 1, false);
@@ -486,6 +485,8 @@
             incomeService.AddIncome(15, 27, new DateTime(2021, 2, 21), user, 1, true);
             incomeService.AddIncome(15, 26.5m, new DateTime(2021, 3, 14), user, 1, true);
             incomeService.AddIncome(15, 27, new DateTime(2021, 4, 28), user, 1, true);
+            incomeService.AddIncome(15, 45, new DateTime(2021, 4, 29), user, 1, true);
+
 
             // за ремонт
             incomeService.AddIncome(15, 20, new DateTime(2020, 5, 10), user, 1, false);
