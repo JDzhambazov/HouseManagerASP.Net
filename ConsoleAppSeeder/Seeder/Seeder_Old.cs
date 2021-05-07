@@ -8,7 +8,7 @@
     using Microsoft.EntityFrameworkCore;
     using Services;
 
-    public class Seeder
+    public class Seeder_Old
     {
         private readonly HouseManagerDbContext db;
         private PropertyService propertyService;
@@ -19,7 +19,7 @@
         private IncomeService incomeService;
         private ExpensService expensService;
 
-        public Seeder(HouseManagerDbContext dbContext)
+        public Seeder_Old(HouseManagerDbContext dbContext)
         {
             this.db = dbContext;
             this.propertyService = new PropertyService(db);

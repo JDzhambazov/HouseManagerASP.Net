@@ -27,8 +27,8 @@
 
             db.Database.Migrate();
 
-            var seeder = new Seeder(db);
-            seeder.Seed();
+            // var seeder = new Seeder(db);
+            // seeder.Seed();
 
             // var propertyService = servicePropvider.GetService<IPropertyService>();
             // var addressServise = new AddressService(db);
