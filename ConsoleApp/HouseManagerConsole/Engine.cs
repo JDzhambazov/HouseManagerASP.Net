@@ -8,8 +8,6 @@
     using System.Threading.Tasks;
     using Data;
     using Data.Models;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Identity.UI;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -32,32 +30,32 @@
             var seeder = new Seeder(db);
             seeder.Seed();
 
-            var propertyService = servicePropvider.GetService<IPropertyService>();
+            // var propertyService = servicePropvider.GetService<IPropertyService>();
             // var addressServise = new AddressService(db);
             // var feeService = new FeeService(db);
             // var userService = new UserService(db);
-            var dueAmountService = servicePropvider.GetService<IDueAmountService>();
+            // var dueAmountService = servicePropvider.GetService<IDueAmountService>();
             // var incomeService = new IncomeService(db);
 
             // задължения за текущ месец
-            for (int i = 1; i < 17; i++)
-            {
-               var result = dueAmountService.GetPropertyMountDueAmount(i);
-               var user = propertyService.GetAllResidents(i);
-               if (result.RegularDueAmount > 0 || result.NotRegularDueAmount > 0)
-               {
-                   Console.WriteLine($"Ап.{i}");
-                   foreach (var item in user)
-                   {
-                        Console.WriteLine(item);
-                   }
-
-                   Console.WriteLine();
-                   Console.WriteLine(result.RegularDueAmount);
-                   Console.WriteLine(result.NotRegularDueAmount);
-                   Console.WriteLine("---------------------------");
-               }
-            }
+            // for (int i = 1; i < 17; i++)
+            // {
+            //    var result = dueAmountService.GetPropertyMountDueAmount(i);
+            //    var user = propertyService.GetAllResidents(i);
+            //    if (result.RegularDueAmount > 0 || result.NotRegularDueAmount > 0)
+            //    {
+            //        Console.WriteLine($"Ап.{i}");
+            //        foreach (var item in user)
+            //        {
+            //             Console.WriteLine(item);
+            //        }
+            // 
+            //        Console.WriteLine();
+            //        Console.WriteLine(result.RegularDueAmount);
+            //        Console.WriteLine(result.NotRegularDueAmount);
+            //        Console.WriteLine("---------------------------");
+            //    }
+            // }
 
             // for (int i = 1; i <= 16; i++)
             // {

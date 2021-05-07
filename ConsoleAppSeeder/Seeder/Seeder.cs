@@ -17,6 +17,7 @@
         private UserService userService;
         private DueAmountService amountService;
         private IncomeService incomeService;
+        private ExpensService expensService;
 
         public Seeder(HouseManagerDbContext dbContext)
         {
@@ -27,6 +28,8 @@
             this.userService = new UserService(db);
             this.amountService = new DueAmountService(db);
             this.incomeService = new IncomeService(db);
+            this.expensService = new ExpensService(db);
+            
         }
 
         public void Seed()
@@ -37,6 +40,7 @@
             // SeedFees();
             // SeedDueAmounts();
             // SeedIncome();
+            // SeedExpenses();
         }
 
         private void SeedUsers()
@@ -516,6 +520,85 @@
             incomeService.AddIncome(16, 20, new DateTime(2021, 2, 12), user, 1, false);
             incomeService.AddIncome(16, 20, new DateTime(2021, 3, 24), user, 1, false);
             incomeService.AddIncome(16, 20, new DateTime(2021, 4, 20), user, 1, false);
+        }
+
+        private void SeedExpenses()
+        {
+            // 2020
+            for (int i = 1; i <= 12; i++)
+            {
+                expensService.AddExpens("Почистване вход", 76.80m, new DateTime(2020, i, 20), true, 1);
+            }
+
+            for (int i = 1; i <= 12; i++)
+            {
+                expensService.AddExpens("Месечна такса Асансьор", 76.80m, new DateTime(2020, i, 20), true, 1);
+            }
+
+            expensService.AddExpens("Ел.енергия Асансьор", 24.26m, new DateTime(2020, 1, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Асансьор", 24.91m, new DateTime(2020, 2, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Асансьор", 22.18m, new DateTime(2020, 3, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Асансьор", 20.11m, new DateTime(2020, 4, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Асансьор", 17.69m, new DateTime(2020, 5, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Асансьор", 20.69m, new DateTime(2020, 6, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Асансьор", 20.65m, new DateTime(2020, 7, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Асансьор", 21.66m, new DateTime(2020, 8, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Асансьор", 22.82m, new DateTime(2020, 9, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Асансьор", 22.56m, new DateTime(2020, 10, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Асансьор", 23.82m, new DateTime(2020, 11, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Асансьор", 23.11m, new DateTime(2020, 12, 20), true, 1);
+
+            expensService.AddExpens("Ел.енергия Осветление", 4.06m, new DateTime(2020, 1, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Осветление", 3.28m, new DateTime(2020, 2, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Осветление", 2.83m, new DateTime(2020, 3, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Осветление", 2.94m, new DateTime(2020, 4, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Осветление", 2.38m, new DateTime(2020, 5, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Осветление", 2.94m, new DateTime(2020, 6, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Осветление", 2.84m, new DateTime(2020, 7, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Осветление", 3.31m, new DateTime(2020, 8, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Осветление", 3.54m, new DateTime(2020, 9, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Осветление", 3.18m, new DateTime(2020, 10, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Осветление", 3.54m, new DateTime(2020, 11, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Осветление", 3.18m, new DateTime(2020, 12, 20), true, 1);
+
+            // Други разходи
+            expensService.AddExpens("Плафон стълбище", 20m, new DateTime(2020, 1, 20), true, 1);
+            expensService.AddExpens("Почистващ препарат", 4m, new DateTime(2020, 3, 20), true, 1);
+            expensService.AddExpens("Почистващ препарат", 4m, new DateTime(2020, 5, 20), true, 1);
+            expensService.AddExpens("Почистващ препарат", 4m, new DateTime(2020, 8, 20), true, 1);
+            expensService.AddExpens("Почистващ препарат", 4m, new DateTime(2020, 10, 20), true, 1);
+            expensService.AddExpens("Годишна такса Асансьор", 48m, new DateTime(2020, 11, 20), true, 1);
+
+            //Смяна дограма
+            expensService.AddExpens("Смяна дограма вход", 2419m, new DateTime(2020, 10, 20), false, 1);
+            expensService.AddExpens("Контейнер за смет", 75m, new DateTime(2020, 10, 20), false, 1);
+            expensService.AddExpens("Силикон за дограма", 30m, new DateTime(2020, 10, 20), false, 1);
+
+            //2021
+            for (int i = 1; i <= 4; i++)
+            {
+                expensService.AddExpens("Почистване вход", 76.80m, new DateTime(2021, i, 20), true, 1);
+            }
+
+            for (int i = 1; i <= 4; i++)
+            {
+                expensService.AddExpens("Месечна такса Асансьор", 76.80m, new DateTime(2021, i, 20), true, 1);
+            }
+
+            expensService.AddExpens("Ел.енергия Асансьор", 24.07m, new DateTime(2020, 1, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Асансьор", 23.82m, new DateTime(2020, 2, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Асансьор", 21.84m, new DateTime(2020, 3, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Асансьор", 24.53m, new DateTime(2020, 4, 20), true, 1);
+
+            expensService.AddExpens("Ел.енергия Осветление", 3.07m, new DateTime(2020, 1, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Осветление", 3.54m, new DateTime(2020, 2, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Осветление", 2.24m, new DateTime(2020, 3, 20), true, 1);
+            expensService.AddExpens("Ел.енергия Осветление", 2.83m, new DateTime(2020, 4, 20), true, 1);
+            
+            expensService.AddExpens("Плафон стълбище", 22.50m, new DateTime(2020, 4, 30), true, 1);
+            expensService.AddExpens("Почистващ препарат", 7.50m, new DateTime(2020, 4, 30), true, 1);
+            expensService.AddExpens("Плафон стълбище", 15m, new DateTime(2020, 4, 30), true, 1);
+            expensService.AddExpens("Почистване канализация", 30m, new DateTime(2020, 4, 30), true, 1);
         }
     }
 }

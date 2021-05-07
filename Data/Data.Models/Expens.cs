@@ -7,9 +7,9 @@
     {
         public int Id { get; set; }
 
-        [Required]
-        [MaxLength(50)]
-        public string Name { get; set; }
+        public int ExpensTypeId { get; set; }
+
+        public ExpensType ExpenseType { get; set; }
 
         [MaxLength(10)]
         [Range(0, double.MaxValue)]
