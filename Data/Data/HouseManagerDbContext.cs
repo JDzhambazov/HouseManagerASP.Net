@@ -6,9 +6,6 @@
 
     public class HouseManagerDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
-        // public HouseManagerDbContext()
-        // {
-        // }
 
         public HouseManagerDbContext(DbContextOptions<HouseManagerDbContext> options)
             : base(options)
@@ -42,11 +39,6 @@
         public DbSet<FeeType> FeeTypes { get; set; }
 
         public DbSet<ExpensType> ExpensesTypes { get; set; }
-
-        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        // {
-        //     optionsBuilder.UseSqlServer("Server=.;Database=HouseManager;Trusted_Connection=True;MultipleActiveResultSets=true");
-        // }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
