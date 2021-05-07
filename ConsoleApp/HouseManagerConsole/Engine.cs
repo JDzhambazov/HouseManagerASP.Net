@@ -2,32 +2,42 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
     using Data;
     using Data.Models;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.UI;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
     using Seeder;
     using Services;
+    using Services.Contracts;
 
     public class Engine
     {
         public void Run()
         {
-            var db = new HouseManagerDbContext();
+            var serviceCollection = new ServiceCollection();
+            ConfigureServices(serviceCollection);
+            var servicePropvider = serviceCollection.BuildServiceProvider();
+
+            var db = servicePropvider.GetService<HouseManagerDbContext>();
 
             db.Database.Migrate();
 
             var seeder = new Seeder(db);
             seeder.Seed();
 
-            var propertyService = new PropertyService(db);
-            var addressServise = new AddressService(db);
-            var feeService = new FeeService(db);
-            var userService = new UserService(db);
-            var dueAmountService = new DueAmountService(db);
-            var incomeService = new IncomeService(db);
+            var propertyService = servicePropvider.GetService<IPropertyService>();
+            // var addressServise = new AddressService(db);
+            // var feeService = new FeeService(db);
+            // var userService = new UserService(db);
+            var dueAmountService = servicePropvider.GetService<IDueAmountService>();
+            // var incomeService = new IncomeService(db);
 
             // задължения за текущ месец
             for (int i = 1; i < 17; i++)
@@ -37,7 +47,12 @@
                if (result.RegularDueAmount > 0 || result.NotRegularDueAmount > 0)
                {
                    Console.WriteLine($"Ап.{i}");
-                   Console.WriteLine(user.FirstOrDefault());
+                   foreach (var item in user)
+                   {
+                        Console.WriteLine(item);
+                   }
+
+                   Console.WriteLine();
                    Console.WriteLine(result.RegularDueAmount);
                    Console.WriteLine(result.NotRegularDueAmount);
                    Console.WriteLine("---------------------------");
@@ -54,6 +69,27 @@
             //    }
             //    Console.WriteLine();
             // }
+        }
+
+        private static void ConfigureServices(IServiceCollection services)
+        {
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            services.AddDbContext<HouseManagerDbContext>(options =>
+                options.UseSqlServer(
+                    configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDefaultIdentity<ApplicationUser>(options =>
+            options.SignIn.RequireConfirmedAccount = false)
+                .AddEntityFrameworkStores<HouseManagerDbContext>();
+
+            services.AddTransient<IPropertyService, PropertyService>();
+            services.AddTransient<IDueAmountService, DueAmountService>();
+            // services.AddTransient<IAnswerService, AnswerServise>();
+            // services.AddTransient<IUserAnswerService, UserAnswerService>();
         }
     }
 }
