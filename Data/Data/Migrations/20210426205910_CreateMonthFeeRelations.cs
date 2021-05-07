@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace Data.Migrations
+﻿namespace Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class CreateMonthFeeRelations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -27,7 +27,7 @@ namespace Data.Migrations
                 columns: table => new
                 {
                     MonthFeesId = table.Column<int>(type: "int", nullable: false),
-                    PropertiesId = table.Column<int>(type: "int", nullable: false)
+                    PropertiesId = table.Column<int>(type: "int", nullable: false),
                 },
                 constraints: table =>
                 {

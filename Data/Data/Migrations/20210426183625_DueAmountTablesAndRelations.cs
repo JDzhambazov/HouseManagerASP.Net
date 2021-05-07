@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace Data.Migrations
+﻿namespace Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class DueAmountTablesAndRelations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -61,7 +61,7 @@ namespace Data.Migrations
                     Month = table.Column<int>(type: "int", maxLength: 2, nullable: false),
                     Year = table.Column<int>(type: "int", maxLength: 4, nullable: false),
                     Cost = table.Column<decimal>(type: "decimal(18,2)", maxLength: 6, nullable: false),
-                    PropertyId = table.Column<int>(type: "int", nullable: false)
+                    PropertyId = table.Column<int>(type: "int", nullable: false),
                 },
                 constraints: table =>
                 {
@@ -83,7 +83,7 @@ namespace Data.Migrations
                     Month = table.Column<int>(type: "int", maxLength: 2, nullable: false),
                     Year = table.Column<int>(type: "int", maxLength: 4, nullable: false),
                     Cost = table.Column<decimal>(type: "decimal(18,2)", maxLength: 6, nullable: false),
-                    PropertyId = table.Column<int>(type: "int", nullable: false)
+                    PropertyId = table.Column<int>(type: "int", nullable: false),
                 },
                 constraints: table =>
                 {

@@ -49,7 +49,6 @@
             //        {
             //             Console.WriteLine(item);
             //        }
-            // 
             //        Console.WriteLine();
             //        Console.WriteLine(result.RegularDueAmount);
             //        Console.WriteLine(result.NotRegularDueAmount);
@@ -86,6 +85,7 @@
 
             services.AddTransient<IPropertyService, PropertyService>();
             services.AddTransient<IDueAmountService, DueAmountService>();
+
             // services.AddTransient<IAnswerService, AnswerServise>();
             // services.AddTransient<IUserAnswerService, UserAnswerService>();
         }

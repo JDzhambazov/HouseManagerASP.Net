@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace Data.Migrations
+﻿namespace Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class AddAddressProppertyInIncomesModels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

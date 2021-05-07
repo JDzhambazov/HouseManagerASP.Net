@@ -1,8 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace Data.Migrations
+﻿namespace Data.Migrations
 {
+    using System;
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class FeeIncomesTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -41,7 +41,7 @@ namespace Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                 },
                 constraints: table =>
                 {
@@ -58,7 +58,7 @@ namespace Data.Migrations
                     Price = table.Column<decimal>(type: "decimal(18,2)", maxLength: 6, nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ResidentId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    AddressId = table.Column<int>(type: "int", nullable: true)
+                    AddressId = table.Column<int>(type: "int", nullable: true),
                 },
                 constraints: table =>
                 {
@@ -93,7 +93,7 @@ namespace Data.Migrations
                     Price = table.Column<decimal>(type: "decimal(18,2)", maxLength: 6, nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ResidentId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    AddressId = table.Column<int>(type: "int", nullable: true)
+                    AddressId = table.Column<int>(type: "int", nullable: true),
                 },
                 constraints: table =>
                 {
@@ -128,7 +128,7 @@ namespace Data.Migrations
                     NameId = table.Column<int>(type: "int", nullable: false),
                     Cost = table.Column<decimal>(type: "decimal(18,2)", maxLength: 6, nullable: false),
                     IsPersonal = table.Column<bool>(type: "bit", nullable: false),
-                    IsRegular = table.Column<bool>(type: "bit", nullable: false)
+                    IsRegular = table.Column<bool>(type: "bit", nullable: false),
                 },
                 constraints: table =>
                 {
@@ -256,7 +256,7 @@ namespace Data.Migrations
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     PropertyId = table.Column<int>(type: "int", nullable: false),
-                    ResidentId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    ResidentId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                 },
                 constraints: table =>
                 {
