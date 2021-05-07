@@ -1,10 +1,10 @@
 ﻿namespace Data.Models
 {
     using System;
-
+    using Data.Common.Models;
     using Microsoft.AspNetCore.Identity;
 
-    public class ApplicationRole : IdentityRole
+    public class ApplicationRole : IdentityRole, IAuditInfo, IDeletableEntity
     {
         public ApplicationRole()
             : this(null)
