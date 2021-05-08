@@ -12,19 +12,12 @@
     <title>@ViewData["Title"] - HouseManager</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    @*<link rel="stylesheet" href="~/assets/vendors/mdi/css/materialdesignicons.min.css">
-        <link rel="stylesheet" href="~/assets/vendors/css/vendor.bundle.base.css">
-        <link rel="stylesheet" href="~/assets/vendors/jvectormap/jquery-jvectormap.css">
-        <link rel="stylesheet" href="~/assets/vendors/flag-icon-css/css/flag-icon.min.css">
-        <link rel="stylesheet" href="~/assets/vendors/owl-carousel-2/owl.carousel.min.css">
-        <link rel="stylesheet" href="~/assets/vendors/owl-carousel-2/owl.theme.default.min.css">*@
-    <link rel="stylesheet" href="~/assets/css/style.css">
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+<body class="min-vh-100 body-image">
+    <header class="darc">
+        <nav style="left:0" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dropdown bg-gradient-dark border-bottom box-shadow text-muted mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HouseManager</a>
+                <a class="navbar-brand text-xl-left" asp-area="" asp-controller="Home" asp-action="Index">HouseManager</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -32,15 +25,15 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-info" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-info" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="DueAmount" asp-action="MonthAmount">MonthAmount</a>
+                                <a class="nav-link text-info" asp-controller="DueAmount" asp-action="MonthAmount">MonthAmount</a>
                             </li>
                         }
                     </ul>
@@ -49,14 +42,14 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container min-vh-100">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <footer class="darc">
+        <div class="container p-lg-3 text-white">
             &copy; 2021 - HouseManager - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
