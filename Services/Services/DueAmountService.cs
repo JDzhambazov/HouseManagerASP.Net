@@ -8,6 +8,7 @@
     using Data;
     using Data.Models;
     using Services.Contracts;
+    using Services.Models;
 
     public class DueAmountService : IDueAmountService
     {
@@ -128,6 +129,33 @@
             });
 
             this.db.SaveChanges();
+        }
+
+        public ICollection<MounthAmountViewModel> GetAddressDueAmount(ICollection<Property> properties)
+        {
+            var result = new List<MounthAmountViewModel>();
+
+            foreach (var property in properties)
+            {
+                var dueAmount = this.GetPropertyMountDueAmount(property.Id);
+                if (dueAmount.RegularDueAmount > 0 || dueAmount.NotRegularDueAmount > 0)
+                {
+                    var user = this.db.Properties
+                        .Where(x => x.Id == property.Id)
+                        .Select(x => x.Residents.FirstOrDefault())
+                        .FirstOrDefault();
+                    result.Add(new MounthAmountViewModel
+                    {
+                        PropertyName = property.Name,
+                        ResidentName = user.FullName,
+                        ResidentsCount = property.ResidentsCount,
+                        RegularDueAmount = dueAmount.RegularDueAmount,
+                        NotRegularDueAmount = dueAmount.NotRegularDueAmount,
+                    });
+                }
+            }
+
+            return result;
         }
     }
 }
